@@ -8,5 +8,5 @@ export const SUPABASE_KEY = 'sb_publishable_iMbvvdV-VzVkCk-hBvr7SA_6qPySF4H';
 export const SUPABASE_DASHBOARD = 'https://supabase.com/dashboard/project/eqfyaeyyiockapusiatn';
 
 export const APP_NAME = 'Plant Diary';
-export const APP_VERSION = '1.1.0';
+export const APP_VERSION = '1.1.1';
 export const SOURCE_URL = 'https://github.com/Fangsheng-Zhou/plant-diary';
