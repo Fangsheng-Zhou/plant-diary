@@ -16,6 +16,12 @@
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    try {
+      var m = (JSON.parse(localStorage.getItem('fk.theme') || '{}') || {}).mode;
+      if (m === 'light' || m === 'dark') document.documentElement.dataset.mode = m;
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <div id="app"></div>

@@ -7,7 +7,7 @@ import {
   daysUntilWatering, wateringStatus, nextWateringDay, intervalOf, isValidDay,
 } from './model.js';
 import { icon, careIcon } from './icons.js';
-import { PRESETS, loadTheme, saveTheme, applyTheme, fromPreset, defaultTheme } from './theme.js';
+import { PRESETS, MODES, loadTheme, saveTheme, applyTheme, fromPreset, defaultTheme } from './theme.js';
 import { exportBackup, saveFile, readBackupFile, restoreSection } from './backup.js';
 import { WrongPassphraseError } from './crypto.js';
 import { APP_NAME, APP_VERSION, SOURCE_URL, SUPABASE_DASHBOARD } from './config.js';
@@ -520,6 +520,9 @@ function viewSettings() {
     ${banners()}
     <h2 class="section-title">Appearance</h2>
     <section class="card pad">
+      <div class="segmented mode-picker" role="radiogroup" aria-label="Appearance">
+        ${MODES.map((m) => `<label><input type="radio" name="mode" value="${m.id}" data-action="mode" ${(t.mode || 'auto') === m.id ? 'checked' : ''}><span>${m.label}</span></label>`).join('')}
+      </div>
       <div class="presets">${PRESETS.map((p, i) => `
         <button class="preset" data-action="preset" data-index="${i}" aria-label="${esc(p.name)} theme">
           <span class="swatch" style="background:${p.background || '#f2f2f7'}"><span style="background:${p.button}"></span><i style="background:${p.accent}"></i></span>
@@ -529,7 +532,7 @@ function viewSettings() {
       <label class="color-row"><span>Care buttons</span><input type="color" data-action="color" data-key="button" value="${esc(t.button)}"></label>
       <label class="color-row"><span>Custom background</span><input type="checkbox" class="switch" data-action="toggle-bg" ${t.useBackground ? 'checked' : ''}></label>
       ${t.useBackground ? `<label class="color-row"><span>Background</span><input type="color" data-action="color" data-key="background" value="${esc(t.background)}"></label>` : ''}
-      <p class="hint">The custom background is used in light mode. Dark mode keeps a dark background so text stays readable.</p>
+      <p class="hint">Automatic follows your iPhone's Light or Dark setting. The custom background is used whenever the app is light; dark appearance keeps a dark background so text stays readable.</p>
       <div class="preview"><span class="btn btn-care wide"><span class="ci water">${icon.drop}</span>Water</span><span class="link">Log a different date</span></div>
       <button class="link" data-action="reset-theme">Reset to default</button>
     </section>
@@ -1030,9 +1033,9 @@ const actions = {
     const v = Math.min(365, Math.max(1, (Math.round(Number(input.value)) || 7) + Number(el.dataset.delta)));
     input.value = v;
   },
-  preset: (el) => { setTheme(fromPreset(PRESETS[Number(el.dataset.index)])); render(true); },
+  preset: (el) => { setTheme(fromPreset(PRESETS[Number(el.dataset.index)], theme.mode)); render(true); },
   'toggle-bg': (el) => { setTheme({ ...theme, useBackground: el.checked }); render(true); },
-  'reset-theme': () => { setTheme(defaultTheme()); render(true); },
+  'reset-theme': () => { setTheme({ ...defaultTheme(), mode: theme.mode }); render(true); },
   export: () => exportFlow(),
   'rename-space': async (el) => {
     const s = state.spaces.find((x) => x.id === el.dataset.space);
@@ -1088,6 +1091,7 @@ const actions = {
 };
 
 const changeActions = {
+  mode: (el) => { setTheme({ ...theme, mode: el.value }); },
   color: (el) => { setTheme({ ...theme, [el.dataset.key]: el.value }); },
   'add-progress': async (el) => {
     const f = el.files[0];
@@ -1137,6 +1141,7 @@ export function start() {
     const el = e.target.closest('[data-action="color"]');
     if (el) changeActions.color(el);
   });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => applyTheme(theme));
   window.addEventListener('hashchange', () => render(true));
   D.subscribe(() => render(false));
   render(true);

@@ -12,7 +12,7 @@ const KEY = 'fk.theme';
 
 export function defaultTheme() {
   const p = PRESETS[0];
-  return { accent: p.accent, button: p.button, useBackground: false, background: '#F2F2F7' };
+  return { mode: 'auto', accent: p.accent, button: p.button, useBackground: false, background: '#F2F2F7' };
 }
 
 export function loadTheme() {
@@ -27,8 +27,22 @@ export function saveTheme(theme) {
   try { localStorage.setItem(KEY, JSON.stringify(theme)); } catch { /* ignore */ }
 }
 
-export function fromPreset(p) {
+export const MODES = [
+  { id: 'auto', label: 'Automatic' },
+  { id: 'light', label: 'Light' },
+  { id: 'dark', label: 'Dark' },
+];
+
+/** Is the app currently showing dark colors? */
+export function isDark(theme) {
+  if (theme.mode === 'dark') return true;
+  if (theme.mode === 'light') return false;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+export function fromPreset(p, mode = 'auto') {
   return {
+    mode,
     accent: p.accent,
     button: p.button,
     useBackground: Boolean(p.background),
@@ -61,6 +75,12 @@ export function applyTheme(theme) {
     root.style.removeProperty('--custom-bg');
     delete root.dataset.customBg;
   }
+  const mode = ['light', 'dark'].includes(theme.mode) ? theme.mode : 'auto';
+  if (mode === 'auto') delete root.dataset.mode;
+  else root.dataset.mode = mode;
+  const dark = isDark(theme);
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme.useBackground ? safeHex(theme.background, d.background) : '#f2f2f7');
+  if (meta) {
+    meta.setAttribute('content', dark ? '#000000' : (theme.useBackground ? safeHex(theme.background, d.background) : '#f2f2f7'));
+  }
 }
