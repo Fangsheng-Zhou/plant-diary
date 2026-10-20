@@ -1,6 +1,6 @@
 // Plant Diary service worker: makes the app open offline and installs updates.
 // Bump VERSION whenever any app file changes, so phones pick up the update.
-const VERSION = 'plant-diary-1.1.1';
+const VERSION = 'plant-diary-1.1.2';
 
 const SHELL = [
   './',
