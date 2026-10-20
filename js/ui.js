@@ -740,6 +740,8 @@ function bindPlantForm(id) {
     coverFile = f;
     const url = URL.createObjectURL(f);
     document.getElementById('cover-preview').innerHTML = `<img src="${url}" alt="" class="loaded">`;
+    const label = form.cover.closest('label').querySelector('span');
+    if (label) label.textContent = 'Change photo';
   });
   const logWater = form.logWater;
   if (logWater) {

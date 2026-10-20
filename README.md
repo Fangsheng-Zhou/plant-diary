@@ -1,6 +1,8 @@
 # Plant Diary
 
 A private plant care log for iPhone, built as a web app you add to your Home Screen.
+**New here? Start with the [setup guide](docs/SETUP.md).**
+
 Track watering schedules, feeding and repotting, plant types, cover and progress photos,
 and care notes. Share a space (for example Home) with your partner and keep another
 (for example Work) to yourself. Colors are customizable in Settings.
@@ -17,29 +19,17 @@ on the phone with AES-256 before it is uploaded. The database only stores scramb
 | Cloudflare Worker | Pings the database daily so it never pauses | Free plan |
 | iCloud Drive / Google Drive | Where you save encrypted backups | Your existing storage |
 
-## One-time setup
+## Setup
 
-1. **Database.** In Supabase, open **SQL Editor**, paste all of `supabase/setup.sql`,
-   and click **Run**. You should see "Success. No rows returned".
-2. **Login links.** In Supabase, open **Authentication > URL Configuration**. Set
-   **Site URL** to the app address (for example `https://fangsheng-zhou.github.io/plant-diary/`)
-   and add the same address under **Redirect URLs**.
-3. **Publish.** In this GitHub repository, open **Settings > Pages**. Under
-   **Build and deployment**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`,
-   then Save. The app appears at the address above within a minute or two.
-4. **Keep-alive.** Follow the steps at the top of `keepalive/worker.js`.
+**Follow the step-by-step [setup guide](docs/SETUP.md).** It covers the one-time setup,
+installing on iPhone, creating spaces, inviting someone, backups, keeping the free
+database awake, and troubleshooting.
 
-## Using it on iPhone
-
-1. Open the app address in Safari, tap **Share**, then **Add to Home Screen**.
-2. Open Plant Diary from the Home Screen and create an account. Confirm the email
-   (the link may open in Safari, which is fine), then sign in from the Home Screen icon.
-   iPhone keeps Home Screen apps separate from Safari, so always use the icon.
-3. Create a space such as **Home**, with a passphrase you both know. Save the passphrase
-   in a password manager. If everyone forgets it, the data cannot be recovered.
-4. To share: open the space in Settings, tap **Invite someone**, and send the code.
-   Tell the passphrase in person. The other person creates their own account, chooses
-   **Enter invite code**, and unlocks with the passphrase.
+<p>
+<img src="docs/images/05-home.png" width="230" alt="Home screen">
+<img src="docs/images/06-plant-page.png" width="230" alt="Plant page">
+<img src="docs/images/10-home-dark.png" width="230" alt="Dark appearance">
+</p>
 
 ## Backups
 
