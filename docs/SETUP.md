@@ -126,6 +126,9 @@ Each space is separate. Someone you invite to **Home** cannot see **Work**, even
 
 - **Home screen:** plants that need water come first, with how many days are left or overdue. Tap the blue **drop** to log a watering for today. Tap **Undo** in the message at the bottom if that was a mistake.
 - **Add a plant:** tap **+**. Add a photo, a name, the type of plant, where it sits, how often to water it, and care notes.
+
+  <img src="images/04-add-plant.png" width="260" alt="Adding a new plant">
+
 - **Plant page:** tap **Water**, **Feed** or **Repot** to log it for today, or **Log a different date** for past care. Add **progress photos** to watch it grow. Tap a history entry to remove it.
 - **Spaces:** when you have more than one, use the **All / Home / Work** buttons at the top of the home screen.
 - **Offline:** changes made without a connection are saved on the phone and upload automatically when you're back online.
