@@ -5,7 +5,6 @@ const svg = (body, { fill = false } = {}) =>
 
 export const icon = {
   drop: svg('<path d="M12 3.5c-2.6 3.3-6 7.3-6 10.7a6 6 0 0 0 12 0c0-3.4-3.4-7.4-6-10.7z"/>', { fill: true }),
-  leaf: svg('<path d="M5 19c0-8 5.5-13.5 14-14 .2 8.6-5.4 14-13.2 14z" fill="currentColor"/><path d="M5 19 13 11" stroke="#fff"/>'),
   repot: svg('<path d="M19.5 10.5A7.5 7.5 0 0 0 6 6.5M4.5 13.5A7.5 7.5 0 0 0 18 17.5"/><path d="M5 3.5v3.5h3.5M19 20.5V17h-3.5"/>'),
   plus: svg('<path d="M12 5v14M5 12h14"/>'),
   sliders: svg('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
@@ -22,7 +21,6 @@ export const icon = {
 };
 
 export const careIcon = (type) => {
-  if (type === 'feed') return `<span class="care-icon feed">${icon.leaf}</span>`;
   if (type === 'repot') return `<span class="care-icon repot">${icon.repot}</span>`;
   return `<span class="care-icon water">${icon.drop}</span>`;
 };

@@ -3,7 +3,7 @@
 A private plant care log for iPhone, built as a web app you add to your Home Screen.
 **New here? Start with the [setup guide](docs/SETUP.md).**
 
-Track watering schedules, feeding and repotting, plant types, cover and progress photos,
+Track watering schedules, repotting, plant types, cover and progress photos,
 and care notes. Share a space (for example Home) with your partner and keep another
 (for example Work) to yourself. Colors are customizable in Settings.
 

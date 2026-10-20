@@ -4,7 +4,6 @@
 
 export const CARE_TYPES = {
   water: { action: 'Water', past: 'Watered', icon: 'drop' },
-  feed: { action: 'Feed', past: 'Fed', icon: 'leaf' },
   repot: { action: 'Repot', past: 'Repotted', icon: 'repot' },
 };
 

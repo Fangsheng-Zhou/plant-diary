@@ -129,7 +129,7 @@ Each space is separate. Someone you invite to **Home** cannot see **Work**, even
 
   <img src="images/04-add-plant.png" width="260" alt="Adding a new plant">
 
-- **Plant page:** tap **Water**, **Feed** or **Repot** to log it for today, or **Log a different date** for past care. Add **progress photos** to watch it grow. Tap a history entry to remove it.
+- **Plant page:** tap **Water** or **Repot** to log it for today, or **Log a different date** for past care. Add **progress photos** to watch it grow. Tap a history entry to remove it.
 - **Spaces:** when you have more than one, use the **All / Home / Work** buttons at the top of the home screen.
 - **Offline:** changes made without a connection are saved on the phone and upload automatically when you're back online.
 
@@ -203,7 +203,7 @@ The app updates itself: when new code is pushed to the `main` branch, each phone
 If you change the code yourself:
 
 1. Edit the files and test them.
-2. In [`sw.js`](../sw.js), increase `VERSION` (for example from `plant-diary-1.1.3` to `plant-diary-1.1.4`). This tells phones to download the new files.
+2. In [`sw.js`](../sw.js), increase `VERSION` (for example from `plant-diary-1.2.0` to `plant-diary-1.2.1`). This tells phones to download the new files.
 3. Commit and push to `main`.
 
 If an update changes `supabase/setup.sql`, run it again in the SQL Editor (Part 1a). It's safe to run more than once.

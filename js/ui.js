@@ -232,7 +232,7 @@ function viewAuth() {
   <main class="auth">
     <img class="app-icon big" src="icons/icon-192.png" alt="">
     <h1 class="app-title">${APP_NAME}</h1>
-    <p class="muted center">Keep track of watering, feeding and growth. Private and encrypted.</p>
+    <p class="muted center">Keep track of watering, repotting and growth. Private and encrypted.</p>
     ${install}
     ${banners()}
     <form id="auth-form" class="card form-card" novalidate>
@@ -410,15 +410,13 @@ function viewPlant(id) {
     <h2 class="section-title">Care</h2>
     <section class="card pad-sm">
       <div class="care-buttons">
-        <button class="btn btn-care wide" data-action="log" data-type="water" data-plant="${esc(plant.id)}"><span class="ci water">${icon.drop}</span>Water</button>
-        <button class="btn btn-care" data-action="log" data-type="feed" data-plant="${esc(plant.id)}"><span class="ci feed">${icon.leaf}</span>Feed</button>
+        <button class="btn btn-care" data-action="log" data-type="water" data-plant="${esc(plant.id)}"><span class="ci water">${icon.drop}</span>Water</button>
         <button class="btn btn-care" data-action="log" data-type="repot" data-plant="${esc(plant.id)}"><span class="ci repot">${icon.repot}</span>Repot</button>
       </div>
       <ul class="kv-list">
         <li class="kv"><span class="care-icon cal">${icon.calendar}</span><span class="kv-label">Next watering</span>
           <span class="kv-value status ${st.tone}">${esc(st.text)}<small>${esc(formatDay(nextWateringDay(plant, events)))}</small></span></li>
         ${careRow('water', space, events)}
-        ${careRow('feed', space, events)}
         ${careRow('repot', space, events)}
       </ul>
       <button class="row-btn" data-action="log-other" data-plant="${esc(plant.id)}">${icon.calendar}<span>Log a different date</span></button>
@@ -533,7 +531,7 @@ function viewSettings() {
       <label class="color-row"><span>Custom background</span><input type="checkbox" class="switch" data-action="toggle-bg" ${t.useBackground ? 'checked' : ''}></label>
       ${t.useBackground ? `<label class="color-row"><span>Background</span><input type="color" data-action="color" data-key="background" value="${esc(t.background)}"></label>` : ''}
       <p class="hint">Automatic follows your iPhone's Light or Dark setting. The custom background is used whenever the app is light; dark appearance keeps a dark background so text stays readable.</p>
-      <div class="preview"><span class="btn btn-care wide"><span class="ci water">${icon.drop}</span>Water</span><span class="link">Log a different date</span></div>
+      <div class="preview"><span class="btn btn-care"><span class="ci water">${icon.drop}</span>Water</span><span class="link">Log a different date</span></div>
       <button class="link" data-action="reset-theme">Reset to default</button>
     </section>
 

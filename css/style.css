@@ -11,7 +11,6 @@
   --sep: rgba(60, 60, 67, 0.16);
   --field: #f2f2f7;
   --water: #1e7cf2;
-  --feed: #2fb34c;
   --repot: #f08a24;
   --danger: #e5383b;
   --overdue: #d93025;
@@ -189,7 +188,6 @@ svg { flex: none; }
 .btn-care { background: var(--button); color: var(--button-text); min-height: 54px; font-weight: 500; }
 .btn-care .ci { display: inline-grid; place-items: center; }
 .ci.water { color: var(--water); }
-.ci.feed { color: #4cd964; }
 .ci.repot { color: var(--repot); }
 .btn-care .ci.water svg { filter: drop-shadow(0 0 1px rgba(255,255,255,.5)); }
 
@@ -373,11 +371,10 @@ img.loaded { opacity: 1; }
 
 .care-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;   /* Water is the everyday action, Repot the occasional one */
   gap: 12px;
   padding: 4px 4px 12px;
 }
-.care-buttons .wide { grid-column: 1 / -1; }
 
 .kv-list { list-style: none; margin: 0; padding: 0; }
 .kv {
@@ -402,10 +399,8 @@ img.loaded { opacity: 1; }
 
 .care-icon { width: 26px; display: inline-grid; place-items: center; }
 .care-icon.water { color: var(--water); }
-.care-icon.feed { color: var(--feed); }
 .care-icon.repot { color: var(--repot); }
 .care-icon.cal { color: var(--accent); }
-.care-icon.feed svg path:last-child { stroke: var(--card); }
 
 .photo-strip {
   display: flex;
